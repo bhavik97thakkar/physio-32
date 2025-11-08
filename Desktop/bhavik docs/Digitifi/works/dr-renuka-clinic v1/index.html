@@ -1,0 +1,1696 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Renuka's Clinic | Best Skin &amp; Hair Wellness Clinic in Ghatkopar East, Mumbai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bg-primary {
+            background-color: #036721;
+        }
+
+        .text-primary {
+            color: #036721;
+        }
+
+        .border-primary {
+            border-color: #036721;
+        }
+
+        .hover\:bg-primary:hover {
+            background-color: #024d18;
+        }
+
+        .hover\:text-primary:hover {
+            color: #036721;
+        }
+
+        .hover\:border-primary:hover {
+            border-color: #036721;
+        }
+
+        .from-primary {
+            --tw-gradient-from: #036721;
+        }
+
+        .to-primary {
+            --tw-gradient-to: #036721;
+        }
+
+        .bg-primary-50 {
+            background-color: #e6f4ea;
+        }
+
+        .bg-primary-100 {
+            background-color: #c1e6cd;
+        }
+
+        .text-primary-700 {
+            color: #024d18;
+        }
+
+        .fill-primary {
+            fill: #036721;
+        }
+
+        .ring-primary {
+            --tw-ring-color: #036721;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Custom Select Styling */
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5em;
+        }
+
+        select option {
+            background-color: #18181b;
+            color: #ffffff;
+            padding: 12px;
+        }
+
+        /* Scroll Animation */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pulse Animation for CTA */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.95);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scale(0.95);
+                opacity: 1;
+            }
+        }
+
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Error Message */
+        .error-message {
+            display: none;
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        .input-error {
+            border-color: #ef4444 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-gray-100">
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button onclick="closeLightbox()"
+            class="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors z-10">
+            <i data-lucide="x" class="w-10 h-10" style="stroke-width: 1.5;"></i>
+        </button>
+        <button onclick="prevImage()"
+            class="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10">
+            <i data-lucide="chevron-left" class="w-12 h-12" style="stroke-width: 1.5;"></i>
+        </button>
+        <button onclick="nextImage()"
+            class="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10">
+            <i data-lucide="chevron-right" class="w-12 h-12" style="stroke-width: 1.5;"></i>
+        </button>
+        <img id="lightbox-img" class="lightbox-content rounded-2xl" src="" alt="Gallery Image">
+    </div>
+
+    <!-- Fixed WhatsApp Button -->
+    <a href="https://wa.me/9372969026" target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 text-white rounded-full p-4 shadow-2xl hover:bg-green-600 hover:scale-110 transition-all duration-300 hover:shadow-green-500/50">
+        <i data-lucide="message-circle" class="w-7 h-7" style="stroke-width: 1.5;"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl z-40 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#home"
+                        class="text-xl font-semibold tracking-tighter text-white hover:text-green-500 transition-colors duration-300">DR<span
+                            class="text-green-500">.</span></a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home"
+                        class="text-gray-300 hover:text-white transition-colors duration-200 text-sm relative group">
+                        Home
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#about"
+                        class="text-gray-300 hover:text-white transition-colors duration-200 text-sm relative group">
+                        About
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#services"
+                        class="text-gray-300 hover:text-white transition-colors duration-200 text-sm relative group">
+                        Services
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#results"
+                        class="text-gray-300 hover:text-white transition-colors duration-200 text-sm relative group">
+                        Results
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#reviews"
+                        class="text-gray-300 hover:text-white transition-colors duration-200 text-sm relative group">
+                        Reviews
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#gallery"
+                        class="text-gray-300 hover:text-white transition-colors duration-200 text-sm relative group">
+                        Gallery
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#contact"
+                        class="text-gray-300 hover:text-white transition-colors duration-200 text-sm relative group">
+                        Contact
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#appointment"
+                        class="bg-white text-black px-5 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 hover:scale-105 transition-all duration-300 hover:shadow-lg">Book
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 scroll-fade">
+                    <div
+                        class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm backdrop-blur-xl hover:bg-white/10 transition-all duration-300">
+                        <i data-lucide="sparkles" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+                        <span>Certified Cosmetology &amp; Trichology Specialist</span>
+                    </div>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-tight">
+                        Revitalize Your Skin, Hair &amp; Wellness
+                    </h1>
+                    <p class="text-xl text-gray-400 leading-relaxed">
+                        Trusted by hundreds in Mumbai for advanced cosmetology, homeopathy &amp; trichology solutions.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#appointment"
+                            class="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-xl text-base font-medium hover:bg-gray-200 hover:scale-105 transition-all duration-300 hover:shadow-xl">
+                            Book Consultation Now
+                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5" style="stroke-width: 1.5;"></i>
+                        </a>
+                        <a href="https://wa.me/9372969026"
+                            class="inline-flex items-center justify-center bg-white/5 border border-white/10 text-white px-8 py-4 rounded-xl text-base font-medium hover:bg-white/10 hover:scale-105 transition-all duration-300 backdrop-blur-xl">
+                            <i data-lucide="message-circle" class="mr-2 w-5 h-5" style="stroke-width: 1.5;"></i>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
+                        <div
+                            class="flex items-center space-x-2 text-sm hover:scale-105 transition-transform duration-300">
+                            <div class="bg-white/5 border border-white/10 p-2 rounded-lg backdrop-blur-xl">
+                                <i data-lucide="award" class="w-5 h-5 text-green-500" style="stroke-width: 1.5;"></i>
+                            </div>
+                            <span class="text-gray-300 font-medium">10+ Years</span>
+                        </div>
+                        <div
+                            class="flex items-center space-x-2 text-sm hover:scale-105 transition-transform duration-300">
+                            <div class="bg-white/5 border border-white/10 p-2 rounded-lg backdrop-blur-xl">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-blue-500"
+                                    style="stroke-width: 1.5;"></i>
+                            </div>
+                            <span class="text-gray-300 font-medium">Certified</span>
+                        </div>
+                        <div
+                            class="flex items-center space-x-2 text-sm hover:scale-105 transition-transform duration-300">
+                            <div class="bg-white/5 border border-white/10 p-2 rounded-lg backdrop-blur-xl">
+                                <i data-lucide="heart" class="w-5 h-5 text-red-500" style="stroke-width: 1.5;"></i>
+                            </div>
+                            <span class="text-gray-300 font-medium">ISO Clinic</span>
+                        </div>
+                        <div
+                            class="flex items-center space-x-2 text-sm hover:scale-105 transition-transform duration-300">
+                            <div class="bg-white/5 border border-white/10 p-2 rounded-lg backdrop-blur-xl">
+                                <i data-lucide="users" class="w-5 h-5 text-purple-500" style="stroke-width: 1.5;"></i>
+                            </div>
+                            <span class="text-gray-300 font-medium">100+ Happy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative scroll-fade">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-3xl blur-3xl">
+                    </div>
+                    <div
+                        class="relative rounded-3xl overflow-hidden border border-white/10 hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&amp;h=1000&amp;fit=crop"
+                            alt="Dr Renuka" class="w-full h-[600px] object-cover">
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-black/80 backdrop-blur-xl border border-white/10 p-6 rounded-2xl hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-500/10 border border-green-500/20 p-3 rounded-xl">
+                                <i data-lucide="star" class="w-6 h-6 text-green-500" style="stroke-width: 1.5;"></i>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-semibold text-white">4.9/5</div>
+                                <div class="text-sm text-gray-400">Patient Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 bg-zinc-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative scroll-fade">
+                    <div
+                        class="rounded-3xl overflow-hidden border border-white/10 hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&amp;h=1000&amp;fit=crop"
+                            alt="Dr Renuka Portrait" class="w-full h-[500px] object-cover">
+                    </div>
+                </div>
+                <div class="space-y-6 scroll-fade">
+                    <div
+                        class="inline-block bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm backdrop-blur-xl">
+                        About Dr Renuka
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white">
+                        Expert Care, Holistic Approach
+                    </h2>
+                    <p class="text-lg text-gray-400 leading-relaxed">
+                        With over a decade of experience in cosmetology, homeopathy and trichology, Dr Renuka blends
+                        scientific expertise and holistic care to help you look your best — from skin and hair to
+                        overall wellness.
+                    </p>
+                    <div
+                        class="bg-white/5 border-l-2 border-green-500 p-6 rounded-r-xl backdrop-blur-xl hover:bg-white/10 transition-colors duration-300">
+                        <p class="text-xl italic text-gray-200">
+                            "My goal is to treat the root cause — not just the surface."
+                        </p>
+                        <p class="text-sm text-gray-400 mt-2 font-medium">— Dr Renuka</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6 pt-4">
+                        <div class="text-center hover:scale-105 transition-transform duration-300">
+                            <div class="text-3xl font-semibold text-white">10+</div>
+                            <div class="text-sm text-gray-400 mt-1">Years Experience</div>
+                        </div>
+                        <div
+                            class="text-center border-l border-r border-white/10 hover:scale-105 transition-transform duration-300">
+                            <div class="text-3xl font-semibold text-white">500+</div>
+                            <div class="text-sm text-gray-400 mt-1">Happy Patients</div>
+                        </div>
+                        <div class="text-center hover:scale-105 transition-transform duration-300">
+                            <div class="text-3xl font-semibold text-white">3</div>
+                            <div class="text-sm text-gray-400 mt-1">Specializations</div>
+                        </div>
+                    </div>
+                    <a href="#appointment"
+                        class="inline-flex items-center bg-green-500 text-white px-6 py-3 rounded-xl font-medium hover:bg-green-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-green-500/50 pulse-ring">
+                        Book a Call with Dr Renuka
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5" style="stroke-width: 1.5;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 scroll-fade">
+                <div
+                    class="inline-block bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm mb-4 backdrop-blur-xl">
+                    Our Services
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                    Multi-Disciplinary Expert Care
+                </h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    Comprehensive solutions for your skin, hair, and wellness needs
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Cosmetology Card -->
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-green-500/50 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div
+                        class="bg-green-500/10 border border-green-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="sparkles" class="w-7 h-7 text-green-500" style="stroke-width: 1.5;"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3">Cosmetology</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Achieve luminous, youthful skin with tailored cosmetology care.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Skin Rejuvenation</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Pigmentation Treatment</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Anti-Ageing Therapy</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Glow Enhancement</span>
+                        </li>
+                    </ul>
+                    <a href="#appointment"
+                        class="text-green-500 font-medium hover:text-green-400 inline-flex items-center group">
+                        Learn More
+                        <i data-lucide="arrow-right"
+                            class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                            style="stroke-width: 1.5;"></i>
+                    </a>
+                </div>
+
+                <!-- Homeopathy Card -->
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-blue-500/50 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div
+                        class="bg-blue-500/10 border border-blue-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="leaf" class="w-7 h-7 text-blue-500" style="stroke-width: 1.5;"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3">Homeopathy</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Natural, science-based homeopathic treatments for skin, wellness &amp; vitality.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Holistic Wellness</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Allergy Treatment</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Hormonal Skin Issues</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Immune Support</span>
+                        </li>
+                    </ul>
+                    <a href="#appointment"
+                        class="text-blue-500 font-medium hover:text-blue-400 inline-flex items-center group">
+                        Learn More
+                        <i data-lucide="arrow-right"
+                            class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                            style="stroke-width: 1.5;"></i>
+                    </a>
+                </div>
+
+                <!-- Trichology Card -->
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-purple-500/50 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div
+                        class="bg-purple-500/10 border border-purple-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="scan" class="w-7 h-7 text-purple-500" style="stroke-width: 1.5;"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3">Trichology</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Restore strong, healthy hair and scalp with expert trichology solutions.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Hair Fall Treatment</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Scalp Therapy</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">PRP for Hair Growth</span>
+                        </li>
+                        <li class="flex items-start hover:translate-x-1 transition-transform duration-200">
+                            <i data-lucide="check" class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0 mt-0.5"
+                                style="stroke-width: 1.5;"></i>
+                            <span class="text-sm text-gray-300">Hair Regrowth Treatment</span>
+                        </li>
+                    </ul>
+                    <a href="#appointment"
+                        class="text-purple-500 font-medium hover:text-purple-400 inline-flex items-center group">
+                        Learn More
+                        <i data-lucide="arrow-right"
+                            class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                            style="stroke-width: 1.5;"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 scroll-fade">
+                <a href="#appointment"
+                    class="inline-flex items-center bg-white text-black px-8 py-4 rounded-xl text-base font-medium hover:bg-gray-200 hover:scale-105 transition-all duration-300 hover:shadow-xl">
+                    View All Services
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5" style="stroke-width: 1.5;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Results -->
+    <section id="results" class="py-24 px-4 sm:px-6 lg:px-8 bg-zinc-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 scroll-fade">
+                <div
+                    class="inline-block bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm mb-4 backdrop-blur-xl">
+                    Real Results
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                    Real Transformations, Real Results
+                </h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    See the incredible transformations our patients have achieved
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(0)">
+                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&amp;h=600&amp;fit=crop"
+                        alt="Before After 1"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h4 class="text-lg font-semibold mb-1">Hair Regrowth</h4>
+                        <p class="text-sm text-gray-300">Visible results in 4 months</p>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(1)">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&amp;h=600&amp;fit=crop"
+                        alt="Before After 2"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h4 class="text-lg font-semibold mb-1">Pigmentation Cleared</h4>
+                        <p class="text-sm text-gray-300">Transformed in 8 weeks</p>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(2)">
+                    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&amp;h=600&amp;fit=crop"
+                        alt="Before After 3"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h4 class="text-lg font-semibold mb-1">Skin Rejuvenation</h4>
+                        <p class="text-sm text-gray-300">Glowing skin in 6 weeks</p>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(3)">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&amp;h=600&amp;fit=crop"
+                        alt="Before After 4"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h4 class="text-lg font-semibold mb-1">Acne Treatment</h4>
+                        <p class="text-sm text-gray-300">Clear skin achieved in 10 weeks</p>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(4)">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&amp;h=600&amp;fit=crop"
+                        alt="Before After 5"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h4 class="text-lg font-semibold mb-1">Hair Density Boost</h4>
+                        <p class="text-sm text-gray-300">Fuller hair in 5 months</p>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(5)">
+                    <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=600&amp;h=600&amp;fit=crop"
+                        alt="Before After 6"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h4 class="text-lg font-semibold mb-1">Anti-Ageing Treatment</h4>
+                        <p class="text-sm text-gray-300">Youthful glow restored</p>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews" class="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 scroll-fade">
+                <div
+                    class="inline-block bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm mb-4 backdrop-blur-xl">
+                    Patient Reviews
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                    What Our Patients Say
+                </h2>
+                <div class="flex items-center justify-center gap-2 mt-4">
+                    <div class="flex">
+                        <i data-lucide="star" class="w-6 h-6 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                    </div>
+                    <span class="text-2xl font-semibold text-white">4.9/5</span>
+                    <span class="text-gray-400">on Google Reviews</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div class="flex mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "Dr Renuka's treatment for my hair fall was life-changing! Within 3 months, I could see visible
+                        regrowth. Her approach is so gentle and effective."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&amp;h=100&amp;fit=crop"
+                            alt="Patient" class="w-12 h-12 rounded-full object-cover border-2 border-white/10">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-white">Priya Sharma</h4>
+                            <p class="text-sm text-gray-400">Ghatkopar, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div class="flex mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "The pigmentation on my face was my biggest insecurity. Dr Renuka's cosmetology treatment gave
+                        me clear, glowing skin. Highly recommended!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&amp;h=100&amp;fit=crop"
+                            alt="Patient" class="w-12 h-12 rounded-full object-cover border-2 border-white/10">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-white">Anjali Desai</h4>
+                            <p class="text-sm text-gray-400">Chembur, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div class="flex mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "I've tried multiple clinics for my skin allergies. Dr Renuka's homeopathy treatment finally
+                        gave me relief. She truly understands root causes."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&amp;h=100&amp;fit=crop"
+                            alt="Patient" class="w-12 h-12 rounded-full object-cover border-2 border-white/10">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-white">Rahul Mehta</h4>
+                            <p class="text-sm text-gray-400">Vikhroli, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div class="flex mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "The clinic is so welcoming and hygienic. Dr Renuka takes time to understand each concern and
+                        explains every step. Best derma experience!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;h=100&amp;fit=crop"
+                            alt="Patient" class="w-12 h-12 rounded-full object-cover border-2 border-white/10">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-white">Neha Kapoor</h4>
+                            <p class="text-sm text-gray-400">Powai, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div class="flex mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "My scalp issues were resolved with PRP therapy. The results were beyond my expectations. Dr
+                        Renuka is a true expert in trichology!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&amp;h=100&amp;fit=crop"
+                            alt="Patient" class="w-12 h-12 rounded-full object-cover border-2 border-white/10">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-white">Arjun Patel</h4>
+                            <p class="text-sm text-gray-400">Andheri, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div class="flex mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"
+                            style="stroke-width: 1.5;"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        "Outstanding service! The anti-ageing treatment has taken years off my face. Dr Renuka's
+                        expertise and care are truly remarkable."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=100&amp;h=100&amp;fit=crop"
+                            alt="Patient" class="w-12 h-12 rounded-full object-cover border-2 border-white/10">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-white">Kavita Singh</h4>
+                            <p class="text-sm text-gray-400">Kurla, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 scroll-fade">
+                <a href="#" class="text-green-500 font-medium hover:text-green-400 inline-flex items-center group">
+                    See More Reviews on Google
+                    <i data-lucide="arrow-right"
+                        class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
+                        style="stroke-width: 1.5;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer Banner -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-950">
+        <div class="max-w-5xl mx-auto text-center scroll-fade">
+            <div
+                class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm mb-6 backdrop-blur-xl">
+                <i data-lucide="sparkles" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+                <span>Limited Time Offer</span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                ₹499 First Consultation
+            </h2>
+            <p class="text-xl text-gray-400 mb-8">
+                Exclusive offer for new patients • Skin, Hair &amp; Wellness Consultations
+            </p>
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div
+                    class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-xl p-4 min-w-[100px] hover:scale-105 transition-transform duration-300">
+                    <div class="text-3xl font-semibold text-white">12</div>
+                    <div class="text-sm text-gray-400">Hours</div>
+                </div>
+                <div class="text-gray-400 text-2xl">:</div>
+                <div
+                    class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-xl p-4 min-w-[100px] hover:scale-105 transition-transform duration-300">
+                    <div class="text-3xl font-semibold text-white">34</div>
+                    <div class="text-sm text-gray-400">Minutes</div>
+                </div>
+                <div class="text-gray-400 text-2xl">:</div>
+                <div
+                    class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-xl p-4 min-w-[100px] hover:scale-105 transition-transform duration-300">
+                    <div class="text-3xl font-semibold text-white">56</div>
+                    <div class="text-sm text-gray-400">Seconds</div>
+                </div>
+            </div>
+            <a href="#appointment"
+                class="inline-flex items-center bg-white text-black px-10 py-4 rounded-xl text-base font-semibold hover:bg-gray-200 hover:scale-105 transition-all duration-300 hover:shadow-xl">
+                Book Your ₹499 Consultation Now
+                <i data-lucide="arrow-right" class="ml-2 w-5 h-5" style="stroke-width: 1.5;"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Appointment Form -->
+    <section id="appointment" class="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 scroll-fade">
+                <div
+                    class="inline-block bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm mb-4 backdrop-blur-xl">
+                    Book Appointment
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                    Start Your Transformation Journey
+                </h2>
+                <p class="text-lg text-gray-400">
+                    Fill in your details and we'll get back to you within 2 hours
+                </p>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-8 sm:p-12 scroll-fade">
+                <form id="appointmentForm" class="space-y-6" onsubmit="return validateForm(event)">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name"
+                            class="w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-transparent transition-all duration-200">
+                        <div id="fullNameError" class="error-message">Please enter your full name</div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Primary Concern</label>
+                        <select id="primaryConcern"
+                            class="w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-transparent transition-all duration-200 appearance-none">
+                            <option value="" class="bg-zinc-900 text-gray-400">Select your concern</option>
+                            <option value="skin" class="bg-zinc-900 text-white">Skin Issues (Pigmentation, Acne,
+                                Anti-Ageing)</option>
+                            <option value="hair" class="bg-zinc-900 text-white">Hair Problems (Hair Fall, Scalp Issues,
+                                Thinning)</option>
+                            <option value="wellness" class="bg-zinc-900 text-white">Holistic Wellness (Allergies,
+                                Hormonal Issues)</option>
+                            <option value="general" class="bg-zinc-900 text-white">General Consultation</option>
+                        </select>
+                        <div id="primaryConcernError" class="error-message">Please select your primary concern</div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                            <input type="tel" id="phoneNumber" placeholder="+91 93729 69026"
+                                class="w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-transparent transition-all duration-200">
+                            <div id="phoneNumberError" class="error-message">Please enter a valid phone number</div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                            <input type="email" id="emailAddress" placeholder="your@email.com"
+                                class="w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-transparent transition-all duration-200">
+                            <div id="emailAddressError" class="error-message">Please enter a valid email address</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Preferred Time Slot</label>
+                        <select id="timeSlot"
+                            class="w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-transparent transition-all duration-200 appearance-none">
+                            <option value="" class="bg-zinc-900 text-gray-400">Select preferred time</option>
+                            <option value="morning" class="bg-zinc-900 text-white">Morning (10 AM - 12 PM)</option>
+                            <option value="afternoon" class="bg-zinc-900 text-white">Afternoon (12 PM - 4 PM)</option>
+                            <option value="evening" class="bg-zinc-900 text-white">Evening (4 PM - 8 PM)</option>
+                        </select>
+                        <div id="timeSlotError" class="error-message">Please select your preferred time slot</div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-white text-black py-5 rounded-xl text-base font-semibold hover:bg-gray-200 hover:scale-105 transition-all duration-300 hover:shadow-xl">
+                        Book Your Consultation Now
+                    </button>
+                </form>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/10">
+                    <div
+                        class="flex items-center justify-center sm:justify-start hover:scale-105 transition-transform duration-300">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-green-500 mr-2"
+                            style="stroke-width: 1.5;"></i>
+                        <span class="text-sm text-gray-400">100% Privacy</span>
+                    </div>
+                    <div class="flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                        <i data-lucide="clock" class="w-5 h-5 text-blue-500 mr-2" style="stroke-width: 1.5;"></i>
+                        <span class="text-sm text-gray-400">2 Hour Response</span>
+                    </div>
+                    <div
+                        class="flex items-center justify-center sm:justify-end hover:scale-105 transition-transform duration-300">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"
+                            style="stroke-width: 1.5;"></i>
+                        <span class="text-sm text-gray-400">Instant Confirmation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-zinc-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 scroll-fade">
+                <div
+                    class="inline-block bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm mb-4 backdrop-blur-xl">
+                    Why Choose Us
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                    Excellence in Every Aspect
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-green-500/50 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div
+                        class="bg-green-500/10 border border-green-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="microscope" class="w-7 h-7 text-green-500" style="stroke-width: 1.5;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Multidisciplinary Expert Care</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Integrated approach combining cosmetology, homeopathy &amp; trichology for comprehensive
+                        treatment.
+                    </p>
+                </div>
+
+                <div
+                    class="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-blue-500/50 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div
+                        class="bg-blue-500/10 border border-blue-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="award" class="w-7 h-7 text-blue-500" style="stroke-width: 1.5;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Experienced &amp; Certified</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Over 10 years of expertise with advanced certifications in all specializations.
+                    </p>
+                </div>
+
+                <div
+                    class="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-green-500/50 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div
+                        class="bg-green-500/10 border border-green-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="leaf" class="w-7 h-7 text-green-500" style="stroke-width: 1.5;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Safe &amp; Natural Treatments</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Evidence-based protocols with natural remedies for minimal side effects and lasting results.
+                    </p>
+                </div>
+
+                <div
+                    class="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-purple-500/50 hover:scale-105 transition-all duration-300 backdrop-blur-xl scroll-fade">
+                    <div
+                        class="bg-purple-500/10 border border-purple-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="users" class="w-7 h-7 text-purple-500" style="stroke-width: 1.5;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Hundreds of Satisfied Patients</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Trusted by patients across Mumbai with proven transformations and 4.9★ rating.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinic Gallery -->
+    <section id="gallery" class="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 scroll-fade">
+                <div
+                    class="inline-block bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm mb-4 backdrop-blur-xl">
+                    Our Clinic
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                    Comfortable. Hygienic. Welcoming.
+                </h2>
+                <p class="text-lg text-gray-400">
+                    Experience world-class facilities designed for your comfort
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(6)">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&amp;h=600&amp;fit=crop"
+                        alt="Reception Area"
+                        class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Reception Area</h4>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(7)">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&amp;h=600&amp;fit=crop"
+                        alt="Treatment Room"
+                        class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Treatment Room</h4>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(8)">
+                    <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&amp;h=600&amp;fit=crop"
+                        alt="Consultation Area"
+                        class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Consultation Area</h4>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(9)">
+                    <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=800&amp;h=600&amp;fit=crop"
+                        alt="Advanced Equipment"
+                        class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Advanced Equipment</h4>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(10)">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&amp;h=600&amp;fit=crop"
+                        alt="Waiting Lounge"
+                        class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Waiting Lounge</h4>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer scroll-fade"
+                    onclick="openLightbox(11)">
+                    <img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=800&amp;h=600&amp;fit=crop"
+                        alt="Clinic Exterior"
+                        class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-lg font-semibold">Clinic Exterior</h4>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i data-lucide="zoom-in" class="w-12 h-12 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-zinc-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 scroll-fade">
+                <div
+                    class="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 text-purple-400 px-4 py-2 rounded-full text-sm mb-4 backdrop-blur-xl">
+                    Follow Our Journey
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                    Daily Skin &amp; Hair Tips
+                </h2>
+                <p class="text-lg text-gray-400 mb-6">
+                    Join our community on Instagram @dr_renukas_clinic
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div
+                    class="group relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&amp;h=400&amp;fit=crop"
+                        alt="Instagram Post" class="w-full h-48 object-cover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="instagram" class="w-8 h-8 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&amp;h=400&amp;fit=crop"
+                        alt="Instagram Post" class="w-full h-48 object-cover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="instagram" class="w-8 h-8 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&amp;h=400&amp;fit=crop"
+                        alt="Instagram Post" class="w-full h-48 object-cover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="instagram" class="w-8 h-8 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&amp;h=400&amp;fit=crop"
+                        alt="Instagram Post" class="w-full h-48 object-cover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="instagram" class="w-8 h-8 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&amp;h=400&amp;fit=crop"
+                        alt="Instagram Post" class="w-full h-48 object-cover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="instagram" class="w-8 h-8 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+                <div
+                    class="group relative rounded-xl overflow-hidden border border-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                    <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=400&amp;h=400&amp;fit=crop"
+                        alt="Instagram Post" class="w-full h-48 object-cover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i data-lucide="instagram" class="w-8 h-8 text-white" style="stroke-width: 1.5;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 scroll-fade">
+                <a href="https://instagram.com/dr_renukas_clinic" target="_blank"
+                    class="inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl text-base font-medium hover:opacity-90 hover:scale-105 transition-all duration-300">
+                    <i data-lucide="instagram" class="mr-2 w-5 h-5" style="stroke-width: 1.5;"></i>
+                    Follow @dr_renukas_clinic
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 scroll-fade">
+                <div
+                    class="inline-block bg-white/5 border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm mb-4 backdrop-blur-xl">
+                    Get In Touch
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+                    Visit Us Today
+                </h2>
+                <p class="text-lg text-gray-400">
+                    We're here to help you achieve your skin, hair &amp; wellness goals
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Cards -->
+                <div class="space-y-6">
+                    <div
+                        class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                        <div class="flex items-start">
+                            <div class="bg-green-500/10 border border-green-500/20 p-4 rounded-xl">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-green-500" style="stroke-width: 1.5;"></i>
+                            </div>
+                            <div class="ml-6 flex-1">
+                                <h3 class="text-xl font-semibold text-white mb-2">Clinic Location</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    Shop No 4, Jay Paras Building, Plot No 52,<br>
+                                    Garodia Nagar, 90 Feet Road,<br>
+                                    Ghatkopar East, Mumbai – 400077
+                                </p>
+                                <a href="https://maps.google.com" target="_blank"
+                                    class="inline-flex items-center text-green-500 font-medium mt-4 hover:text-green-400 group">
+                                    Get Directions
+                                    <i data-lucide="arrow-right"
+                                        class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                                        style="stroke-width: 1.5;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                        <div class="flex items-start">
+                            <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                                <i data-lucide="phone" class="w-6 h-6 text-blue-500" style="stroke-width: 1.5;"></i>
+                            </div>
+                            <div class="ml-6 flex-1">
+                                <h3 class="text-xl font-semibold text-white mb-2">Call Us</h3>
+                                <p class="text-gray-400 mb-4">
+                                    Speak to our team for appointment booking
+                                </p>
+                                <a href="tel:+9372969026"
+                                    class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-blue-700 hover:scale-105 transition-all duration-300">
+                                    <i data-lucide="phone" class="mr-2 w-4 h-4" style="stroke-width: 1.5;"></i>
+                                    +91 93729 69026
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                        <div class="flex items-start">
+                            <div class="bg-green-500/10 border border-green-500/20 p-4 rounded-xl">
+                                <i data-lucide="message-circle" class="w-6 h-6 text-green-500"
+                                    style="stroke-width: 1.5;"></i>
+                            </div>
+                            <div class="ml-6 flex-1">
+                                <h3 class="text-xl font-semibold text-white mb-2">WhatsApp Chat</h3>
+                                <p class="text-gray-400 mb-4">
+                                    Quick responses to your queries
+                                </p>
+                                <a href="https://wa.me/9372969026" target="_blank"
+                                    class="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-green-700 hover:scale-105 transition-all duration-300">
+                                    <i data-lucide="message-circle" class="mr-2 w-4 h-4" style="stroke-width: 1.5;"></i>
+                                    Chat on WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 scroll-fade">
+                        <div class="flex items-start">
+                            <div class="bg-purple-500/10 border border-purple-500/20 p-4 rounded-xl">
+                                <i data-lucide="clock" class="w-6 h-6 text-purple-500" style="stroke-width: 1.5;"></i>
+                            </div>
+                            <div class="ml-6 flex-1">
+                                <h3 class="text-xl font-semibold text-white mb-2">Clinic Hours</h3>
+                                <div class="space-y-2 text-gray-400">
+                                    <div class="flex justify-between">
+                                        <span>Monday - Saturday</span>
+                                        <span class="font-medium text-white">10:00 AM - 8:00 PM</span>
+                                    </div>
+                                    <div class="flex justify-between text-green-500">
+                                        <span>Sunday</span>
+                                        <span class="font-medium">Closed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div
+                    class="rounded-2xl overflow-hidden border border-white/10 h-[600px] hover:scale-105 transition-transform duration-500 scroll-fade">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60330.953112588366!2d72.8379225216797!3d19.077601299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c70061690f1f%3A0xec8d977045ff6c90!2sDr%20Renuka&#39;s%20Clinic!5e0!3m2!1sen!2sin!4v1762579964108!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 border-t border-white/10 text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2 scroll-fade">
+                    <a href="#home"
+                        class="text-3xl font-semibold tracking-tighter mb-4 inline-block hover:text-green-500 transition-colors duration-300">DR<span
+                            class="text-green-500">.</span></a>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Dr Renuka's Clinic offers comprehensive solutions for skin, hair, and wellness through expert
+                        cosmetology, homeopathy, and trichology treatments.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/dr_renukas_clinic" target="_blank"
+                            class="bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-white/10 hover:scale-110 transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5" style="stroke-width: 1.5;"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank"
+                            class="bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-white/10 hover:scale-110 transition-all duration-300">
+                            <i data-lucide="facebook" class="w-5 h-5" style="stroke-width: 1.5;"></i>
+                        </a>
+                        <a href="https://wa.me/9372969026" target="_blank"
+                            class="bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-white/10 hover:scale-110 transition-all duration-300">
+                            <i data-lucide="message-circle" class="w-5 h-5" style="stroke-width: 1.5;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="scroll-fade">
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">About
+                                Dr Renuka</a></li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Our
+                                Services</a></li>
+                        <li><a href="#results"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Before
+                                &amp; After</a></li>
+                        <li><a href="#reviews"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Patient
+                                Reviews</a></li>
+                        <li><a href="#appointment"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Book
+                                Appointment</a></li>
+                    </ul>
+                </div>
+
+                <div class="scroll-fade">
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Cosmetology</a>
+                        </li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Homeopathy</a>
+                        </li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Trichology</a>
+                        </li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Skin
+                                Rejuvenation</a></li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-200">Hair
+                                Treatment</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 scroll-fade">
+                <div class="text-center text-gray-400">
+                    <p>© 2024 Dr Renuka's Clinic. All rights reserved. | Best Skin &amp; Hair Wellness Clinic in
+                        Ghatkopar East, Mumbai</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Gallery images array
+        const galleryImages = [
+            'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=1200&fit=crop',
+            'https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=1200&h=1200&fit=crop'
+        ];
+
+        let currentImageIndex = 0;
+
+        // Lightbox functions
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = galleryImages[index];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            document.getElementById('lightbox-img').src = galleryImages[currentImageIndex];
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            document.getElementById('lightbox-img').src = galleryImages[currentImageIndex];
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Close lightbox when clicking outside image
+        document.getElementById('lightbox').addEventListener('click', function (e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // Form validation
+        function validateForm(event) {
+            event.preventDefault();
+
+            let isValid = true;
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value.trim();
+            const primaryConcern = document.getElementById('primaryConcern').value;
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const emailAddress = document.getElementById('emailAddress').value.trim();
+            const timeSlot = document.getElementById('timeSlot').value;
+
+            // Reset all error states
+            document.querySelectorAll('.error-message').forEach(msg => msg.classList.remove('show'));
+            document.querySelectorAll('input, select').forEach(input => input.classList.remove('input-error'));
+
+            // Validate Full Name
+            if (fullName === '') {
+                showError('fullName', 'fullNameError');
+                isValid = false;
+            }
+
+            // Validate Primary Concern
+            if (primaryConcern === '') {
+                showError('primaryConcern', 'primaryConcernError');
+                isValid = false;
+            }
+
+            // Validate Phone Number
+            const phoneRegex = /^[6-9]\d{9}$/;
+            if (phoneNumber === '' || !phoneRegex.test(phoneNumber.replace(/[^0-9]/g, ''))) {
+                showError('phoneNumber', 'phoneNumberError');
+                isValid = false;
+            }
+
+            // Validate Email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailAddress === '' || !emailRegex.test(emailAddress)) {
+                showError('emailAddress', 'emailAddressError');
+                isValid = false;
+            }
+
+            // Validate Time Slot
+            if (timeSlot === '') {
+                showError('timeSlot', 'timeSlotError');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Form is valid, you can submit it here
+                alert('Thank you! We will contact you within 2 hours.');
+                document.getElementById('appointmentForm').reset();
+            }
+
+            return false;
+        }
+
+        function showError(inputId, errorId) {
+            document.getElementById(inputId).classList.add('input-error');
+            document.getElementById(errorId).classList.add('show');
+        }
+
+        // Remove error on input
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', function () {
+                this.classList.remove('input-error');
+                const errorId = this.id + 'Error';
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+            });
+        });
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-fade elements
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.scroll-fade').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
